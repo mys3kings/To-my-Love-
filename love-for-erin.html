@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For Erin MI 💚</title>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: #ccff00;
+  font-family: 'Georgia', serif;
+  overflow: hidden;
+  color: #222;
+  text-align: center;
+  height: 100vh;
+}
+
+#intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+#intro button {
+  padding: 15px 30px;
+  font-size: 24px;
+  background: #fff;
+  color: #222;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#intro button:hover {
+  background: #f0f0f0;
+}
+
+.container {
+  display: none;
+  max-width: 700px;
+  margin: auto;
+  font-size: 22px;
+  line-height: 1.8;
+  padding: 40px 20px;
+}
+
+#text {
+  border-right: 2px solid #222;
+  padding-right: 5px;
+}
+
+.heart {
+  position: absolute;
+  font-size: 20px;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh); opacity: 1; }
+  to { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div id="intro">
+  <h1>💚 For Erin MI 💚</h1>
+  <button id="startBtn">Tap to Begin 💚</button>
+</div>
+
+<div class="container" id="mainContent">
+  <h1>💚 Erin MI 💚</h1>
+  <div id="text"></div>
+</div>
+
+<!-- Soft Background Music -->
+<audio id="bgMusic" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mp3">
+</audio>
+
+<script>
+const message = `Erin MI...
+The love of my life. My world.
+
+I've been thinking about the past few weeks.
+Even though we are back together,
+my heart still feels heavy.
+
+I'm truly sorry for the way I made you feel.
+You didn't deserve that.
+
+I know my behavior hurt you.
+And I regret it deeply.
+
+I love you.
+Not just in words,
+but in growth.
+In change.
+In effort.
+
+I don't just want us like before.
+I want us stronger.
+Better.
+Healthier.
+
+If you let me,
+I'll keep proving it.
+Every single day. 💚`;
+
+const speed = 60; // lower = faster
+let i = 0;
+
+function typeWriter() {
+  if (i < message.length) {
+    document.getElementById("text").innerHTML += message.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+
+// Floating hearts
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "💚";
+  heart.style.left = Math.random() * window.innerWidth + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 6000);
+}
+
+// Start button logic
+document.getElementById("startBtn").addEventListener("click", () => {
+  document.getElementById("intro").style.display = "none";
+  document.getElementById("mainContent").style.display = "block";
+  document.getElementById("bgMusic").play();
+  typeWriter();
+  setInterval(createHeart, 800);
+});
+</script>
+
+</body>
+  </html>
